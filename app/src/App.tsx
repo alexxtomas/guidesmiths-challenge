@@ -1,13 +1,10 @@
-import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from './app/store'
 const App = (): JSX.Element => {
-  useEffect(() => {
-    fetch('http://localhost:3000/phonebook')
-      .then(async res => await res.json())
-      .then(json => console.log(json))
-      .catch(e => console.error(e))
-  }, [])
+  const phonesState = useSelector((state: RootState) => state.phones)
+  console.log(phonesState)
   return (
-    <div />
+    <div></div>
   )
 }
 
