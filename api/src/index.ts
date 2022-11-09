@@ -1,5 +1,6 @@
 import cors from 'cors'
 import express from 'express'
+import phones from './services/phones'
 
 const app = express()
 
@@ -8,11 +9,29 @@ app.use(cors())
 
 const PORT = 3000
 
-app.get('/ping', (req, res) => {
-    res.json('pong')
+app.get('/phones', (_req, res) => {
+  res.json(phones.getAll())
 })
 
+app.get('/phones/:id', (req, res) => {
+  const { id } = req.params
+
+  const phone = phones.getById(+id)
+
+  if (!phone) res.status(404).json({ error: 'The id does not belong to any phone ' })
+
+  res.json(phone)
+})
 
 app.listen(PORT, () => {
-    console.log(`Server is runningo on port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 })
+
+
+
+
+
+
+
+
+
