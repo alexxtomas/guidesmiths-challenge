@@ -8,7 +8,7 @@ export const phoneSlice = createSlice({
   name: 'phones',
   initialState,
   reducers: {
-    initialize: (state, action: PayloadAction<Phone[]>) => state.concat(action.payload)
+    initialize: (state, action: PayloadAction<Phone[]>) => action.payload
   }
 })
 
