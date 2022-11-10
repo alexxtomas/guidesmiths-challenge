@@ -1,7 +1,13 @@
+import { Link } from "wouter"
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <header>
+      <h1>Phones Catalogue</h1>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
+    </header>
   )
 }
 

@@ -18,7 +18,7 @@ app.get('/phones/:id', (req, res) => {
 
   const phone = phones.getById(+id)
 
-  if (!phone) res.status(404).json({ error: 'The id does not belong to any phone ' })
+  if (!phone) res.status(404).json({ err: 'The id does not belong to any phone ' })
 
   res.json(phone)
 })

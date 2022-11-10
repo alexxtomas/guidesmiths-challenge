@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
+import phoneReducer from '../features/phone/phoneSlice'
 import phonesReducer from "../features/phones/phonesSlice"
 export const store = configureStore({
   reducer: {
-    phones: phonesReducer
+    phones: phonesReducer,
+    phone: phoneReducer
   }
 })
 
