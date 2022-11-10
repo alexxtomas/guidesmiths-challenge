@@ -51,6 +51,8 @@ header nav a:hover {
   justify-content: center;
   gap: 3rem;
   margin-top: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .home figure {
