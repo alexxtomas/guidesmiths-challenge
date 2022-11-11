@@ -2,6 +2,7 @@ import { useLocation } from "wouter"
 import Loading from "../components/Loading"
 import { usePhones } from "../hooks/usePhones"
 const Home = () => {
+
   const { loading, error, phonesState } = usePhones()
   const [location, navigate] = useLocation()
 
