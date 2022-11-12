@@ -4,22 +4,28 @@ import { usePhones } from '../hooks/usePhones'
 interface Param {
   id: string
 }
-const Phone = ({ id }: Param) => {
-  const { error, loading, phoneState } = usePhones(+id)
+const Phone = ({ id }: Param): JSX.Element => {
+  const { error, loading, state } = usePhones(+id)
+  const phoneState = state as Phone
 
-  if (loading) return <Loading />
-  if (error) return <div>Error</div>
-
+  if (loading === true) return <Loading />
+  if (error === true) return <div>Error</div>
 
   return (
-    <section className='phoneDetails-container'>
-      <h2>{phoneState?.manufacturer} {phoneState?.name}</h2>
-      <img className='' src={`/phonesImages/${phoneState?.imageFileName}`} alt={`${phoneState?.name} image`} />
+    <section className="phoneDetails-container">
+      <h2>
+        {phoneState.manufacturer} {phoneState.name}
+      </h2>
+      <img
+        className=""
+        src={`/phonesImages/${phoneState.imageFileName}`}
+        alt={`${phoneState.name} image`}
+      />
       <p>${phoneState?.price}</p>
-      <p className='description'>{phoneState?.description}</p>
-      <div className='specifications'>
+      <p className="description">{phoneState?.description}</p>
+      <div className="specifications">
         <h3>Specifications</h3>
-        <div className='specifications-container'>
+        <div className="specifications-container">
           <div>
             <p>Color {phoneState?.color}</p>
             <p>Screen {phoneState?.screen}</p>

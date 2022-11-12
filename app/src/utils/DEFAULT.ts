@@ -8,5 +8,5 @@ export default {
   price: 0,
   processor: 'Default',
   ram: 0,
-  screen: 'Default'
+  screen: 'Default',
 }

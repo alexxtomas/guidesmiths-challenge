@@ -1,6 +1,6 @@
-import { Link } from "wouter"
+import { Link } from 'wouter'
 
-const Header = () => {
+const Header = (): JSX.Element => {
   return (
     <header>
       <h1>Phones Catalogue</h1>

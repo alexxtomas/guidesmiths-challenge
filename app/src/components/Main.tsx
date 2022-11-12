@@ -3,12 +3,15 @@ import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 import Phone from '../pages/Phone'
 
-const Main = () => {
+const Main = (): JSX.Element => {
   return (
     <main>
       <Switch>
-        <Route path='/' component={Home} />
-        <Route path='/phone/:id' component={({ params }) => <Phone id={params.id} />} />
+        <Route path="/" component={Home} />
+        <Route
+          path="/phone/:id"
+          component={({ params }) => <Phone id={params.id} />}
+        />
         <Route component={NotFound} />
       </Switch>
     </main>

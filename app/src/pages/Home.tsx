@@ -1,28 +1,28 @@
-import { useLocation } from "wouter"
-import Loading from "../components/Loading"
-import { usePhones } from "../hooks/usePhones"
-const Home = () => {
+import { useLocation } from 'wouter'
+import Loading from '../components/Loading'
+import { usePhones } from '../hooks/usePhones'
 
-  const { loading, error, phonesState } = usePhones()
-  const [location, navigate] = useLocation()
+const Home = (): JSX.Element => {
+  const { loading, error, state } = usePhones()
+  const [, navigate] = useLocation()
 
-  if (loading) return <Loading />
-  if (error) return <div>Error...</div>
+  const phonesState = state as Phone[]
 
-  const handleClick = (id: number) => {
+  if (loading === true) return <Loading />
+  if (error === true) return <div>Error...</div>
+
+  const handleClick = (id: number): void => {
     navigate(`/phone/${id}`)
   }
 
   return (
     <section className="home">
-      {
-        phonesState?.map(({ id, name, imageFileName }) =>
-          <figure onClick={() => handleClick(id)} key={id}>
-            <img src={`/phonesImages/${imageFileName}`} />
-            <figcaption>{name}</figcaption>
-          </figure>
-        )
-      }
+      {phonesState?.map(({ id, name, imageFileName }) => (
+        <figure onClick={() => handleClick(id)} key={id} data-testid="phone">
+          <img src={`/phonesImages/${imageFileName}`} />
+          <figcaption>{name}</figcaption>
+        </figure>
+      ))}
     </section>
   )
 }

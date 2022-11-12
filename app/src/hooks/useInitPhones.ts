@@ -5,10 +5,9 @@ import { initialize } from '../features/phones/phonesSlice'
 import phonesService from '../services/phonesService'
 
 interface InitPhones {
-  phonesState: Phone[],
-  loading: Boolean,
-  error: Boolean,
-
+  phonesState: Phone[]
+  loading: Boolean
+  error: Boolean
 }
 
 export const useInitPhones = (): InitPhones => {
@@ -17,14 +16,14 @@ export const useInitPhones = (): InitPhones => {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   useEffect(() => {
-    phonesService.getAll()
-      .then(data => {
+    phonesService
+      .getAll()
+      .then((data) => {
         dispatch(initialize(data))
         setLoading(false)
       })
-      .catch(e => setError(true))
+      .catch((e) => setError(true))
   }, [])
 
   return { phonesState, error, loading }
 }
-

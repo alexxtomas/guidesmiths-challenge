@@ -1,6 +1,6 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
-import DEFAULT from '../../utils/DEFAULT';
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import DEFAULT from '../../utils/DEFAULT'
 
 interface GetAction {
   phones: Phone[]
@@ -18,15 +18,14 @@ export const phoneSlice = createSlice({
     get: (state, action: PayloadAction<GetAction>) => {
       const { phones } = action.payload
       const { id } = action.payload
-      const phone = phones.find(phone => phone.id === id)
-      if (!phone) return initialState
+      const phone = phones.find((phone) => phone.id === id)
+      if (phone == null) return initialState
       return phone
     },
     set: (state, action: PayloadAction<SetAction>) => action.payload.phone,
-    reset: (state) => initialState
-  }
+    reset: (state) => initialState,
+  },
 })
-
 
 export const { get, set, reset } = phoneSlice.actions
 
